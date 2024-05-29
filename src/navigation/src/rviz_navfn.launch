@@ -1,0 +1,8 @@
+<launch>
+  <!-- Launch RViz with the AMCL configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find amcl)/rviz/amcl.rviz" />
+
+  <!-- Load the map in RViz -->
+  <node name="map_client" pkg="map_server" type="map_server" args="$(find navigation)/map/mymap.yaml" />
+</launch>
+

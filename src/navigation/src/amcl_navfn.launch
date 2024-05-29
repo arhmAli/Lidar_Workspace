@@ -1,0 +1,14 @@
+<launch>
+  <!-- Launch the map server with your generated map -->
+  <arg name="map_file" default="$(find navigation)/map/mymap.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Launch AMCL with Navfn for global planning -->
+  <node name="amcl" pkg="amcl" type="amcl" output="screen">
+    <param name="use_map_topic" value="true"/>
+    <param name="base_global_planner" value="navfn/NavfnROS"/>
+    <param name="odom_frame_id" value="odom"/>
+    <!-- Add other AMCL parameters here -->
+  </node>
+</launch>
+
